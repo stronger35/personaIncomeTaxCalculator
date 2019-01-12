@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>个人所得税</title>
+<style>
+    body{
+        padding: 1rem;
+    }
+    #floatingIncomeInfo input{
+        width: 96%;
+    }
+</style>
+</head>
+<body>
+    <div id="fixedIncome">
+        <h4>月收入固定</h4>
+        <span>税前收入</span><input id="preTaxIncome"/><br>
+        <span>五险一金</span><input id="insurance"/><br>
+        <span>专项扣除</span><input id="specialDeduction"/><br>
+        <div style="margin-top: 0.5rem;">
+            <button onclick="calculateIncomeTax_fixed();">计算</button>
+            <button onclick="resetIncomeTax_fixed();">重置</button>
+        </div>
+
+        <table id="fixedIncome_tb" border="1" cellspacing="0" style="margin: 1rem 0;">
+            <tr>
+                <th style="width: 5rem;"></th><th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th>
+                <th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>11月</th><th>12月</th><th>合计</th>
+            </tr>
+
+        </table>
+    </div>
+
+    <div style="width:100%;height:0;border-top:1px black dashed;" />
+
+    <div id="floatingIncome">
+        <h4>月收入非固定</h4>
+
+        <div floatingIncome_toolbar>
+            <span>计算前</span>
+            <select id="months" onchange="changeToolbar();">
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+                <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            </select>
+            <span>个月</span>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>五险一金是否固定</span>
+            <select id="isFixedInsurance" onchange="changeToolbar_insurance();">
+                <option value="1">是</option><option value="2">否</option>
+            </select>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>专项扣除是否固定</span>
+            <select id="isFixedSpecialDeduction" onchange="changeToolbar_specialDeduction();">
+                <option value="1">是</option><option value="2">否</option>
+            </select>
+            <br>
+
+            <table id="floatingIncomeInfo" border="1" cellspacing="0" style="margin: 1rem 0;">
+
+            </table>
+        </div>
+
+        <div style="margin-top: 0.5rem;">
+            <button onclick="calculateIncomeTax_floating();">计算</button>
+            <button onclick="resetIncomeTax_floating();">重置</button>
+        </div>
+
+        <table id="floatingIncome_tb" border="1" cellspacing="0" style="margin: 1rem 0;">
+
+        </table>
+    </div>
+
+</body>
+<script src="js/strategy.js"></script>
+<script src="js/fixedIncome.js"></script>
+<script src="js/floatingIncome.js"></script>
+</html>
