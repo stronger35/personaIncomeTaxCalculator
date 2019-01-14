@@ -264,6 +264,7 @@ function calculateIncomeTax_floating_new(months, isFixedInsurance, isFixedSpecia
 
         taxableIncomeTotal += taxableIncome;
         var incomeTaxCurrentMonth = calculateIncomeTaxCurrentMonth_newdRule(taxableIncomeTotal) - incomeTaxtotal;
+        incomeTaxCurrentMonth = (incomeTaxCurrentMonth >= 0) ? incomeTaxCurrentMonth : 0;
         incomeTaxtotal += incomeTaxCurrentMonth;
         taxTds_newRule += '<td>' + incomeTaxCurrentMonth.toFixed(2) + '</td>';
 
